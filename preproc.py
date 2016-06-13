@@ -18,7 +18,6 @@ for line in txtinput:
     output = ""
     for word in abbr_check:
         if word in abbr_list:
-            print word            
             del word
             continue
         output += word + " "
