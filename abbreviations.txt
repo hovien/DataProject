@@ -33,7 +33,6 @@ Abr.
 Abridg.
 Abridgem.
 absol.
-Absol.
 Abst.
 abstr.
 Abstr.
