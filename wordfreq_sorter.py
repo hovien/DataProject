@@ -1,8 +1,8 @@
 # coding=utf-8
 
 import chardet
-freqs = open("stemmed-wordfreq.txt")
-sorted_freqs = open("wordfreq_sorted.txt", "w")
+freqs = open(raw_input("enter input file: "))
+sorted_freqs = open(raw_input("enter output file: "), "w")
 
 sorted_freqs_list = []
 

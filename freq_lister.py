@@ -1,19 +1,19 @@
 # coding=utf-8
 
-from types import *
+import re
 
-input_file = open("barack.freq.txt")
-output_file = open("barack.freq.sorted.cut.txt", "w")
+#input is the nounfrequency list
+input_file = open(raw_input("enter input file: "))
+output_file = open(raw_input("enter output file: "), "w")
 
-freq_list = []
+attribute_list = []
 
 for line in input_file:
-    wordfreq = line.strip().split(" ")
-    wordfreq[0] = int(wordfreq[0])
-    freq_list.append(tuple(wordfreq))
+    item = line.rstrip("]").lstrip("[")
+    if int(item[0]) > 1:
+        word = re.find("[2-9]+, '([a-z])'", item)
+        attribute_list.append(word)
+   
 
-freq_list.sort(reverse= True)
-
-for i in range(200):
-    
-    output_file.write(freq_list[i][1] + "\n")
+for item in attribute_list:
+    output_file.write(item + "\n")
