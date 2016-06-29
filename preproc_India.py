@@ -24,13 +24,16 @@ for line in txtinput:
     output = output.split("." or "?" or "!")   
     sentence_list.extend(output)
 
-#removing stop words and non-alphabeting characters
+#removing stop words, citation marks, questions and non-alphabeting characters
 output_string = ""
 for sentence in sentence_list:
     if len(sentence) <= 2:
         continue    
     output_sentence = ""
-    one_sentence = sentence.split(" ")
+    citations_removed = re.sub('\[ citation .* \]', '', sentence)
+    questions_removed = re.sub('q:.*\?', '', citations_removed)
+    a_removed = re.sub('a:', '', questions_removed)
+    one_sentence = a_removed.split(" ")
     for word in one_sentence:
         if word in stop_list:
             continue
@@ -39,4 +42,4 @@ for sentence in sentence_list:
     output_string += output_sentence + "\n"
 
 #decoding-encoding and writing the result in the output
-txtoutput.write(output_string.decode("windows 1252").encode("utf-8"))
+txtoutput.write(output_string)
