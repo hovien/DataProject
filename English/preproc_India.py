@@ -3,8 +3,8 @@
 import re
 
 txtinput = open(raw_input("input file name: "),)
-stop_input = open(raw_input("stop word list: "))
-abbr_input = open(raw_input("abbreviation list: "))
+stop_input = open("english_stop.txt")
+abbr_input = open("abbreviations.txt")
 txtoutput = open(raw_input("output file name: "), "w")
 
 #creating the stopword and abbreviation list
