@@ -7,8 +7,8 @@ sorted_freqs = open(raw_input("enter output file: "), "w")
 sorted_freqs_list = []
 
 for line in freqs:
-    line = line.rstrip()    
-    freq, word = line[6], line[8:]
+    line = line.rstrip()
+    freq, word = line[:7], line[8:]
     freqword = str(freq) + " " + str(word)
     sorted_freqs_list.append(freqword)
 
