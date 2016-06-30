@@ -20,7 +20,7 @@ for line in input_file:
    
 for item in attribute_list:
     stemmed_word = stemmer.stemWords([item])
-    if not stemmed_word[0] in stemmed_attr_list:
+    if not stemmed_word in stemmed_attr_list:
         stemmed_attr_list.extend(stemmed_word)
 
 for item in stemmed_attr_list:
