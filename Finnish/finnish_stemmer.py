@@ -2,9 +2,10 @@
 
 import Stemmer
 import re
+import sys
 
-sentence_input = open(raw_input("input file name: "))
-stemmed_output = open(raw_input("output file name: "), "w")
+sentence_input = sys.stdin
+stemmed_output = sys.stdout
 stemmer = Stemmer.Stemmer('finnish')
 sentence_list = []
 stemmed_sentence_list = []

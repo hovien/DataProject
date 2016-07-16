@@ -1,10 +1,11 @@
 # coding=utf-8
 
 import re
+import sys
 
 #input is the nounfrequency list
-input_file = open(raw_input("enter input file: "))
-output_file = open(raw_input("enter output file: "), "w")
+input_file = sys.stdin
+output_file = sys.stdout
 
 attribute_list = []
 

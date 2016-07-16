@@ -1,9 +1,11 @@
 # coding=utf-8
 
-input_file = open(raw_input("Enter the input file name: "))
-word_freq = open(raw_input("Enter the attribute list file name: "))
-output_file = open(raw_input("Enter the output file name: "), "w")
-relation = raw_input("Enter the relation name: ")
+import sys
+
+input_file = open(sys.argv[1])
+word_freq = open(sys.argv[2])
+output_file = sys.stdout
+relation = sys.argv[3]
 
 output_file.write("@relation {}\n".format(relation))
 

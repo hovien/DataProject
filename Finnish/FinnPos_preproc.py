@@ -1,8 +1,9 @@
 # coding=utf-8
 import re
+import sys
 
-input_file = open(raw_input("Enter the input file name: "))
-output_file = open(raw_input("Enter the output file name: "), "w")
+input_file = sys.stdin
+output_file = sys.stdout
 
 #creating a list of sentences from the input file
 sentence_list = []

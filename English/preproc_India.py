@@ -1,11 +1,12 @@
 # coding=utf-8
 
 import re
+import sys
 
-txtinput = open(raw_input("input file name: "),)
-stop_input = open("english_stop.txt")
-abbr_input = open("abbreviations.txt")
-txtoutput = open(raw_input("output file name: "), "w")
+txtinput = sys.stdin
+stop_input = open("../DataProject/English/english_stop.txt")
+abbr_input = open("../DataProject/English/abbreviations.txt")
+txtoutput = sys.stdout
 
 #creating the stopword and abbreviation list
 stop_list = (stop_input.read()).split("\n")

@@ -2,10 +2,11 @@
 
 import re
 import Stemmer
+import sys
 
 #input is the nounfrequency list
-input_file = open(raw_input("enter input file: "))
-output_file = open(raw_input("enter output file: "), "w")
+input_file = sys.stdin
+output_file = sys.stdout
 stemmer = Stemmer.Stemmer('english')
 
 attribute_list = []
@@ -21,7 +22,7 @@ for line in input_file:
 for item in attribute_list:
     stemmed_word = stemmer.stemWords([item])
     if not stemmed_word in stemmed_attr_list:
-        stemmed_attr_list.extend(stemmed_word)
+        stemmed_attr_list.append(stemmed_word)
 
 for item in stemmed_attr_list:
-    output_file.write(item + "\n")
+    output_file.write(item[0] + "\n")

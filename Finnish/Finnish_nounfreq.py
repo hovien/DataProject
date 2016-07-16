@@ -1,9 +1,10 @@
 # coding=utf-8
 import re
+import sys
 
 #input is the file created by the POS tagger
-txtinput = open(raw_input("input file name: "),)
-txtoutput = open(raw_input("output file name: "), "w")
+txtinput = sys.stdin
+txtoutput = sys.stdout
 text = txtinput.read()
 
 #finding all the nouns from the text
