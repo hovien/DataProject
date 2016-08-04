@@ -31,10 +31,11 @@ output_file.write("@data\n")
 
 for line in line_list:
     output_line = ""
+    word_list = line.split(" ")
     for word in attributes:
-        if word not in line:
+        if word_list.count(word) == 0:
             output_line += "?,"
-        else:
+        elif word_list.count(word) > 0:
             output_line += "t,"
     
     output_line = output_line.rstrip(",")

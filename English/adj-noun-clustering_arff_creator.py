@@ -3,9 +3,10 @@
 import sys
 
 input_file = open(sys.argv[1])
-word_freq = open(sys.argv[2])
+adj_list = open(sys.argv[2])
+noun_list = open(sys.argv[3])
 output_file = sys.stdout
-relation = sys.argv[3]
+relation = sys.argv[4]
 
 output_file.write("@relation {}\n".format(relation))
 
@@ -15,12 +16,12 @@ for line in input_file:
     line = line.rstrip()
     line_list.append(line) 
 
-#writing the attributes into the file
-word_list = list(word_freq)
+#writing the adjectives as attributes into the file
+attr_list = list(adj_list)
 attributes = []
 
-for word in word_list:
-    attributes.append(word.strip())
+for adj in attr_list:
+    attributes.append(adj.strip())
 
 for word in attributes:
     line = "@attribute " + "'{}'".format(word) + " numeric"
@@ -29,8 +30,13 @@ for word in attributes:
 #writing the data into the file
 output_file.write("@data\n")
 
-#going through the rows in the table
-for row in attributes:
+#going through the nouns as rows in the table
+noun_rows = list(noun_list)
+rows = []
+for noun in noun_rows:
+    rows.append(noun.strip())
+
+for row in rows:
     output_line = ""
     # each row contains the frequency of the attributes near the row attribute
     for attribute in attributes:
@@ -55,6 +61,4 @@ for row in attributes:
         output_line = output_line + str(counter) + ","               
     
     output_line = output_line.rstrip(",")
-    output_file.write(output_line + "\n")   
-
-
+    output_file.write(output_line + "\n")    

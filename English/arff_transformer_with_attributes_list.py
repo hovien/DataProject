@@ -20,7 +20,9 @@ word_list = list(word_freq)
 attributes = []
 
 for word in word_list:
-    attributes.append(word.strip())
+    word = word.strip()
+    if not word in attributes: 
+        attributes.append(word)
 
 for word in attributes:
     line = "@attribute " + "'{}'".format(word) + " { t}"
@@ -31,11 +33,12 @@ output_file.write("@data\n")
 
 for line in line_list:
     output_line = ""
+    word_list = line.split(" ")
     for word in attributes:
-        if word not in line:
+        if word_list.count(word) == 0:
             output_line += "?,"
-        else:
+        elif word_list.count(word) > 0:
             output_line += "t,"
-    
+            
     output_line = output_line.rstrip(",")
     output_file.write(output_line + "\n")    
