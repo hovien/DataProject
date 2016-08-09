@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#asks for filename
+echo "Enter file name:"
+read file_name
+
+#creates frequency list
+cd ./FinnPos
+cat ../data/$file_name | python ../Finntagger_preproc.py | bin/ftb-label | python ../lemmas.py > ../data/$file_name.freq
+
+
+#creates noun frequency list
+cd ./FinnPos
+cat ../data/$file_name | python ../Finntagger_preproc.py | bin/ftb-label | python ../Finnish_nounfreq.py > ../data/$file_name.nounfreq
+cd ..
+

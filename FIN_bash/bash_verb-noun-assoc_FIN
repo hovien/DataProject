@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#asks for filename
+echo "Enter file name:"
+read file_name
+
+#creates stemmed file
+cat ../DataProject/data/Finnish/$file_name | python ../DataProject/Finnish/preproc_Finland.py | python ../DataProject/Finnish/finnish_stemmer.py > ../DataProject/data/Finnish/results/stemmed/$file_name
+
+#creates attribute list
+cat ../DataProject/data/Finnish/$file_name | python ../DataProject/Finnish/Finntagger_preproc.py | ftb-label | python ../DataProject/Finnish/Finnish_nounfreq.py | python ../DataProject/Finnish/Finnish_attr_lister.py > ../DataProject/data/Finnish/results/attributes/$file_name-verb-noun-attr
+cat ../DataProject/data/Finnish/$file_name | python ../DataProject/Finnish/Finntagger_preproc.py | ftb-label | python ../DataProject/Finnish/verbfreq.py | python ../DataProject/Finnish/Finnish_attr_lister.py >> ../DataProject/data/Finnish/results/attributes/$file_name-verb-noun-attr
+
+#creates ARFF file for association rule testing
+python ../DataProject/Finnish/arff_transformer_with_attributes_list.py "../DataProject/data/Finnish/results/stemmed/$file_name" "../DataProject/data/Finnish/results/attributes/$file_name-verb-noun-attr" "$file_name" > ../DataProject/data/Finnish/results/$file_name\_verb-noun-assoc.arff
+

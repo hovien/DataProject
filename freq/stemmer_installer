@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#installs the stemmer
+cd ./pystemmer-master
+python setup.py install
+cd ..
+

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#asks for filename
+echo "Enter file name:"
+read file_name
+
+#creates stemmed file
+cat ../DataProject/data/English/$file_name | python ../DataProject/English/preproc_India.py | python ../DataProject/English/english_stemmer.py > ../DataProject/data/English/results/stemmed/$file_name
+
+#creates attribute list
+./stanford-postagger.sh models/english-left3words-distsim.tagger ../DataProject/data/English/$file_name | python ../DataProject/English/nounfreq.py | python ../DataProject/English/attribute_lister.py > ../DataProject/data/English/results/attributes/$file_name-verb-noun-attr
+./stanford-postagger.sh models/english-left3words-distsim.tagger ../DataProject/data/English/$file_name | python ../DataProject/English/verbfreq.py | python ../DataProject/English/verb_attr_lister.py >> ../DataProject/data/English/results/attributes/$file_name-verb-noun-attr
+
+#creates ARFF file for association rule testing
+python ../DataProject/English/arff_transformer_with_attributes_list.py "../DataProject/data/English/results/stemmed/$file_name" "../DataProject/data/English/results/attributes/$file_name-verb-noun-attr" "$file_name" > ../DataProject/data/English/results/$file_name\_verb-noun-assoc.arff
+
