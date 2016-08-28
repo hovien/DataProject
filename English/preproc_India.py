@@ -2,6 +2,7 @@
 
 import re
 import sys
+import codecs
 
 txtinput = sys.stdin
 stop_input = open("../DataProject/English/english_stop.txt")
@@ -42,5 +43,5 @@ for sentence in sentence_list:
         output_sentence += only_letters + " "
     output_string += output_sentence + "\n"
 
-#decoding-encoding and writing the result in the output
+#writing the result in the output
 txtoutput.write(output_string)

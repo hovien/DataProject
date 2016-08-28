@@ -5,10 +5,13 @@ echo "Enter file name:"
 read file_name
 
 #creates stemmed file
-cat ../DataProject/data/English/$file_name | python ../DataProject/English/preproc_India.py | python ../DataProject/English/english_stemmer.py > ../DataProject/data/English/results/stemmed/$file_name
+cat data/English/$file_name | python English/preproc_India.py | python English/english_stemmer.py > data/English/results/stemmed/$file_name
 
 #creates attribute list
-./stanford-postagger.sh models/english-left3words-distsim.tagger ../DataProject/data/English/$file_name | python ../DataProject/English/verbfreq.py | python ../DataProject/English/attribute_lister.py > ../DataProject/data/English/results/attributes/$file_name-verbs
+cd Tools/stanford-postagger-2015-12-09
+./stanford-postagger.sh models/english-left3words-distsim.tagger ../../data/English/$file_name | python ../../English/verbfreq.py | python ../../English/attribute_lister.py > ../../data/English/results/attributes/$file_name-verbs
+cd ..
+cd ..
 
 #creates ARFF file for clustering
-python ../DataProject/English/clustering_arff_creator.py "../DataProject/data/English/results/stemmed/$file_name" "../DataProject/data/English/results/attributes/$file_name-verbs" "$file_name" > ../DataProject/data/English/results/$file_name\_verb-clustering.arff
+python English/clustering_arff_creator.py "data/English/results/stemmed/$file_name" "data/English/results/attributes/$file_name-verbs" "$file_name" > data/English/results/$file_name\_verb-clustering.arff

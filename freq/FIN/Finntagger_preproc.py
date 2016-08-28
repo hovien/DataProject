@@ -23,6 +23,7 @@ for sen in sentence_list:
     words.extend(".")
     for word in words:
         output_line = ""
+        #change the encoding in the brackets if working with input file that has different encoding from utf-8
         uniword = word.decode("utf-8")
         output_line = uniword + "\n"
         output_file.write(output_line.encode("utf-8"))

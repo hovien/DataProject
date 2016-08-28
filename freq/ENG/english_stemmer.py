@@ -3,6 +3,7 @@
 import Stemmer
 import re
 import sys
+import codecs
 
 sentence_input = sys.stdin
 stemmed_output = sys.stdout
@@ -11,7 +12,8 @@ sentence_list = []
 stemmed_sentence_list = []
 
 for line in sentence_input:
-    sentence_list.append(line.rstrip())
+    decoded = line.decode("windows-1252")
+    sentence_list.append(decoded.rstrip())
    
 for sentence in sentence_list:
     stemmed_sentence = []
@@ -27,7 +29,7 @@ for sentence in stemmed_sentence_list:
     for word in sentence: 
         sentence_string += word + " "    
     stemmed_sentence_string += sentence_string + "\n"   
-stemmed_output.write(stemmed_sentence_string)
+stemmed_output.write(stemmed_sentence_string.encode("utf-8"))
           
     
 

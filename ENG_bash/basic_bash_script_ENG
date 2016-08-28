@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#asks for filename
+echo "Enter file name:"
+read file_name
+
+#creates stemmed file
+cat data/English/$file_name | python English/preproc_India.py | python English/english_stemmer.py > data/English/results/stemmed/$file_name
+
+#creates attribute list
+cd Tools/stanford-postagger-2015-12-09
+./stanford-postagger.sh models/english-left3words-distsim.tagger ../../data/English/$file_name | python ../../English/nounfreq.py | python ../../English/attribute_lister.py > ../../data/English/results/attributes/$file_name
+cd ..
+cd ..
+
+#creates ARFF file for association rule testing
+python English/arff_transformer_with_attributes_list.py "data/English/results/stemmed/$file_name" "data/English/results/attributes/$file_name" "$file_name" > data/English/results/$file_name\_assoc.arff
+
+#creates ARFF file for clustering
+python English/clustering_arff_creator.py "data/English/results/stemmed/$file_name" "data/English/results/attributes/$file_name" "$file_name" > data/English/results/$file_name\_clustering.arff

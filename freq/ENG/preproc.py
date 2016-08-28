@@ -4,8 +4,8 @@ import re
 import sys
 
 txtinput = sys.stdin
-stop_input = open("english_stop.txt")
-abbr_input = open("abbreviations.txt")
+stop_input = open("freq/ENG/english_stop.txt")
+abbr_input = open("freq/ENG/abbreviations.txt")
 txtoutput = sys.stdout
 
 #creating the stopword and abbreviation list

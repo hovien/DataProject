@@ -5,11 +5,11 @@ echo "Enter file name:"
 read file_name
 
 #creates frequency list
-cat ./data/$file_name | python ./preproc_India.py | python ./english_stemmer.py | tr ' ' '\n' | sort | uniq -c | python ./wordfreq_sorter.py > ./data/$file_name.freq
+cat data/English/$file_name | python freq/ENG/preproc.py | python freq/ENG/english_stemmer.py | tr ' ' '\n' | sort | uniq -c | python freq/ENG/wordfreq_sorter.py > data/English/results/freq/$file_name.freq
 
 
 #creates noun frequency list
-cd ./stanford-postagger-2015-12-09
-./stanford-postagger.sh models/english-left3words-distsim.tagger ../data/$file_name | python ../nounfreq.py > ../data/$file_name.nounfreq
+cd Tools/stanford-postagger-2015-12-09
+./stanford-postagger.sh models/english-left3words-distsim.tagger ../../data/English/$file_name | python ../../freq/ENG/nounfreq.py > ../../data/English/results/freq/$file_name.nounfreq
 cd ..
-
+cd ..
