@@ -5,8 +5,8 @@ import sys
 import codecs
 
 txtinput = sys.stdin
-stop_input = open("../DataProject/English/english_stop.txt")
-abbr_input = open("../DataProject/English/abbreviations.txt")
+stop_input = open("English/english_stop.txt")
+abbr_input = open("English/abbreviations.txt")
 txtoutput = sys.stdout
 
 #creating the stopword and abbreviation list

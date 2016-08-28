@@ -5,10 +5,13 @@ echo "Enter file name:"
 read file_name
 
 #creates stemmed file
-cat ../DataProject/data/Finnish/$file_name | python ../DataProject/Finnish/preproc_Finland.py | python ../DataProject/Finnish/finnish_stemmer.py > ../DataProject/data/Finnish/results/stemmed/$file_name
+cat data/Finnish/$file_name | python Finnish/preproc_Finland.py | python Finnish/finnish_stemmer.py > data/Finnish/results/stemmed/$file_name
 
 #creates attribute list
-cat ../DataProject/data/Finnish/$file_name | python ../DataProject/Finnish/Finntagger_preproc.py | ftb-label | python ../DataProject/Finnish/verbfreq.py | python ../DataProject/Finnish/Finnish_attr_lister.py > ../DataProject/data/Finnish/results/attributes/$file_name-verbs
+cd Tools/FinnPos
+cat ../../data/Finnish/$file_name | python ../../Finnish/Finntagger_preproc.py | ftb-label | python ../../Finnish/verbfreq.py | python ../../Finnish/Finnish_attr_lister.py > ../../data/Finnish/results/attributes/$file_name-verbs
+cd ..
+cd ..
 
 #creates ARFF file for clustering
-python ../DataProject/Finnish/clustering_arff_creator.py "../DataProject/data/Finnish/results/stemmed/$file_name" "../DataProject/data/Finnish/results/attributes/$file_name-verbs" "$file_name" > ../DataProject/data/Finnish/results/$file_name\_verb-clustering.arff
+python Finnish/clustering_arff_creator.py "data/Finnish/results/stemmed/$file_name" "data/Finnish/results/attributes/$file_name-verbs" "$file_name" > data/Finnish/results/$file_name\_verb-clustering.arff

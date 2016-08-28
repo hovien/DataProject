@@ -4,8 +4,8 @@ import re
 import sys
 
 txtinput = sys.stdin
-stop_input = open("../DataProject/Finnish/finnish_stop.txt")
-abbr_input = open("../DataProject/Finnish/suomilyhenteet.txt")
+stop_input = open("Finnish/finnish_stop.txt")
+abbr_input = open("Finnish/suomilyhenteet.txt")
 txtoutput = sys.stdout
 
 #creating the stopword and abbreviation list
