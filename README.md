@@ -1,6 +1,6 @@
 # DataProject
 This is a school project that aims to analyze interview data using Python for preprocessing and Weka for text mining.
-the folders contain linux bash scripts, python code and tools I used that were created by others. All bash scripts are to be run from the main folder, directories are changed automatically by the script. Description of the contents of folders:
+the folders contain linux bash scripts, python code and tools I used that were created by others. All bash scripts are to be run from the main folder, directories are changed automatically by the script. Analysis can only be done on UTF-8 encoded text. Description of the contents of folders:
 
 Tools:
 Here are the programs that need to be installed to use my solutions. These programs are not my work and I don't take credit for them, I just have them in one place for convenience. 
@@ -63,9 +63,9 @@ FIN_bash:
 
 freq - this folder has the python and bash code for creating frequency lists.
 
-1) For making the English frequency list, run freq/ENG/freq_bash. It will prompt for the name of the file you want to process (path not needed, only file name). The output files (word frequency and noun frequency list excluding stop words)  will appear in the data folder where the original was.
+1) For making the English frequency list, run freq/ENG/freq_bash. It will prompt for the name of the file you want to process (path not needed, only file name). The output files (word frequency and noun frequency list excluding stop words)  will appear in data/English/results/freq (the folders have to exist already).
 
-2) For making the Finnish files, repeat the process with the freq/FIN/freq_bash. The Finnish version doesn't remove the stop words.
+2) For making the Finnish files, repeat the process with the freq/FIN/freq_bash. The Finnish version doesn't remove the stop words. The output is data/Finnish/results/freq (the folders have to exist already).
 
 3) freq_sums.py in both folders (ENG and FIN) creates a file that contains all words from all input files with their corresponding frequencies as columns next to each other. The inputs are either the word frequencies or the noun frequencies. It is saved as csv file and the format is like this: word, frequency in text A, frequency in text B, etc. I used this file to make visualisations using Tools/raw. The file names are hard coded, no prompting happens, so the python file needs to be changed directly before running. Comments with capital letters inside the file help with it.
 
